@@ -85,6 +85,7 @@ body {
     justify-content: space-between;
     margin-bottom: 10px;
     width: 80%;
+    position: relative;
 
     background-color: gold;
     border-radius: 10px;
@@ -95,19 +96,15 @@ body {
     content: '';
     position: absolute;
     width: 100px;
-    height: 18%;
+    height: 120%;
     background-image: linear-gradient(
         120deg,
         rgba(255,255,255, 0) 15%,
         rgba(255,255,255, .8),
         rgba(255,255,255, 0) 85%
     );
-    top: 0;
-    right: 80%;
-    bottom: 32%;
-    left: 0;
-    margin: auto;
-    animation: shine 2.3s infinite linear;
+    transform: translateY(-38%);
+    animation: shine 5s infinite linear;
 }
 
 
@@ -125,6 +122,8 @@ body {
     justify-content: space-between;
     margin-bottom: 10px;
     width: 80%;
+    position: relative;
+
 
     background-color: silver;
     border-radius: 10px;
@@ -136,21 +135,16 @@ body {
     content: '';
     position: absolute;
     width: 100px;
-    height: 18%;
+    height: 120%;
     background-image: linear-gradient(
         120deg,
         rgba(255,255,255, 0) 15%,
         rgba(255,255,255, .8),
         rgba(255,255,255, 0) 85%
     );
-    top: 18%;
-    right: 80%;
-    bottom: 15%;
-    left: 0;
-    margin: auto;
-    animation: shine 2.8s infinite linear;
+    transform: translateY(-38%);
+    animation: shine 5s infinite linear;
 }
-
 
 .entry-wrapper-bronze
 {
@@ -158,6 +152,8 @@ body {
     justify-content: space-between;
     margin-bottom: 10px;
     width: 80%;
+    position: relative;
+
 
     background-color: #CD7F32;
     border-radius: 10px;
@@ -168,19 +164,15 @@ body {
     content: '';
     position: absolute;
     width: 100px;
-    height: 16%;
+    height: 120%;
     background-image: linear-gradient(
         120deg,
         rgba(255,255,255, 0) 15%,
         rgba(255,255,255, .8),
         rgba(255,255,255, 0) 85%
     );
-    top: 38%;
-    right: 80%;
-    bottom: 0%;
-    left: 0;
-    margin: auto;
-    animation: shine 3s infinite linear;
+    transform: translateY(-38%);
+    animation: shine 5s infinite linear;
 }
 
 .key 
