@@ -1,5 +1,6 @@
 function displaySessionData() {
   chrome.storage.session.get(null, function(data) {
+    displayTotalVisits(data);
     displayTable(data, 10);
   });
 }
@@ -9,15 +10,17 @@ function displayTotalVisits(dictionary)
   const getTotalVisits = function(dictionary)
   {
     var count = 0;
-    var entries = Object.entries(dictionary);
-    for (const entry of entries) {
-      count += entry;
+    var values = Object.values(dictionary);
+    for (const value of values) {
+      count += value;
     }
     return count;
   }
 
-  var p = document.createEvent("p");
-  p.innerHTML = "You visited " + String(getTotalVisits(dictionary)) + " sites.";
+  var p = document.createElement("p");
+  p.innerHTML = "You visited a page <b>" + String(getTotalVisits(dictionary)) + "</b> times.";
+  p.classList.add("info");
+  document.body.append(p);
 }
 
 function displayTable(dictionary, rows) {
@@ -35,7 +38,22 @@ function displayTable(dictionary, rows) {
 
     // Create a div to hold the key-value pair
     const entryWrapper = document.createElement("div");
-    entryWrapper.classList.add("entry-wrapper");
+    switch (count)
+    {
+      case 0:
+        entryWrapper.classList.add("entry-wrapper-gold");
+        break;
+      case 1:
+        entryWrapper.classList.add("entry-wrapper-silver");    
+        break;
+      case 2:
+        entryWrapper.classList.add("entry-wrapper-bronze");    
+        break;
+      default:
+        entryWrapper.classList.add("entry-wrapper");    
+        break;
+    }
+    //entryWrapper.classList.add("entry-wrapper");
 
     // Create the key element
     const keyElement = document.createElement("div");
