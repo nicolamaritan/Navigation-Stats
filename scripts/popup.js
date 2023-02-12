@@ -1,7 +1,8 @@
 function displaySessionData() {
   chrome.storage.session.get(null, function(data) {
     displayTotalVisits(data);
-    displayTable(data, 10);
+    displayDifferentSitesNumber(data);
+    displayTable(data, null);
   });
 }
 
@@ -17,8 +18,16 @@ function displayTotalVisits(dictionary)
     return count;
   }
 
-  var p = document.createElement("p");
+  var p = document.createElement("div");
   p.innerHTML = "You visited a page <b>" + String(getTotalVisits(dictionary)) + "</b> times.";
+  p.classList.add("info");
+  document.body.append(p);
+}
+
+function displayDifferentSitesNumber(dictionary)
+{
+  var p = document.createElement("div");
+  p.innerHTML = "You visited <b>" + Object.keys(dictionary).length + "</b> different sites.";
   p.classList.add("info");
   document.body.append(p);
 }
@@ -34,7 +43,7 @@ function displayTable(dictionary, rows) {
 
   let count = 0;
   for (const entry of entries) {
-    if (count >= rows) break;
+    if (rows != null && count >= rows) break;
 
     // Create a div to hold the key-value pair
     const entryWrapper = document.createElement("div");
