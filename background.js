@@ -25,11 +25,20 @@ function update(url)
   });
 }
 
+function getBaseUrl(url) {
+  let urlObj = new URL(url);
+  return urlObj.origin;
+}
+
 // Listener for loading page to be completed
 chrome.webNavigation.onCompleted.addListener(function(details) {
   var url = String(details.url);
+  url = getBaseUrl(url);
   console.log("A page was loaded: " + url);
-  update(url);
+  if (url != "null")
+  {
+    update(url);
+  }
 });
 
 
