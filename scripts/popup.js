@@ -4,30 +4,20 @@ function displaySessionData() {
   });
 }
 
-
-function displayTable2(dict, rows) {
-  let table = document.createElement('table');
-  table.classList.add('main-table');
-    
-  // Sort by values (visits) in descending order
-  let entries = Object.entries(dict);
-  entries.sort(function(a, b) {return b[1] - a[1];});
-
-  // Creates table
-  for (let i = 0; i < Math.min(entries.length, rows); i++)
+function displayTotalVisits(dictionary)
+{
+  const getTotalVisits = function(dictionary)
   {
-    let [key, value] = entries[i];
-    let row = document.createElement('tr');
-    row.classList.add('main-row');
-    let cell1 = document.createElement('td');
-    cell1.innerHTML = key;
-    let cell2 = document.createElement('td');
-    cell2.innerHTML = value;
-    row.appendChild(cell1);
-    row.appendChild(cell2);
-    table.appendChild(row);
+    var count = 0;
+    var entries = Object.entries(dictionary);
+    for (const entry of entries) {
+      count += entry;
+    }
+    return count;
   }
-  document.body.appendChild(table);
+
+  var p = document.createEvent("p");
+  p.innerHTML = "You visited " + String(getTotalVisits(dictionary)) + " sites.";
 }
 
 function displayTable(dictionary, rows) {
