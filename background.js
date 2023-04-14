@@ -44,3 +44,17 @@ chrome.webNavigation.onCompleted.addListener(function(details) {
 });
 
 
+// Set the start time when the extension is loaded
+const startTime = new Date();
+
+// Listen for messages from the popup script
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+  if (request.type === "getElapsedTime") 
+  {
+    const currentTime = new Date();
+    const elapsedTime = currentTime.getTime() - startTime.getTime();
+    // Send the elapsed time back to the popup script
+    sendResponse({elapsedTime: elapsedTime});
+  }
+});
+

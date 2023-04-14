@@ -2,6 +2,7 @@ function displaySessionData() {
   chrome.storage.session.get(null, function(data) {
     displayTotalVisits(data);
     displayDifferentSitesNumber(data);
+    displayTime();
     displayTable(data, null);
   });
 }
@@ -30,6 +31,53 @@ function displayDifferentSitesNumber(dictionary)
   p.innerHTML = "You visited <b>" + Object.keys(dictionary).length + "</b> different sites.";
   p.classList.add("info");
   document.body.append(p);
+}
+
+function convertMillisecondsToHoursAndMinutes(milliseconds) 
+{
+  // Calculate the total number of minutes
+  const totalMinutes = Math.floor(milliseconds / 60000);
+  
+  // Calculate the number of hours and minutes
+  const hours = Math.floor(totalMinutes / 60);
+  const minutes = totalMinutes % 60;
+  
+  // Build the string representation
+  let str = "";
+  if (hours > 0) {
+    str += hours + " hour";
+    if (hours > 1) {
+      str += "s";
+    }
+  }
+  if (minutes > 0) {
+    if (str.length > 0) {
+      str += " ";
+    }
+    str += minutes + " minute";
+    if (minutes > 1) {
+      str += "s";
+    }
+  }
+  if (str.length == 0)
+  {
+    str = " some seconds";
+  }
+  return str;
+}
+
+
+function displayTime()
+{
+  var p = document.createElement("div");
+  p.classList.add("info");
+  document.body.append(p);  // First append, then set innerText as response might come slightly later
+  chrome.runtime.sendMessage({type: "getElapsedTime"}, function(response) {
+    // Update the HTML element with the elapsed time
+    console.log(response.elapsedTime)
+    p.innerHTML = "Your session is <b>" + convertMillisecondsToHoursAndMinutes(response.elapsedTime) + "</b> long.";
+  });
+
 }
 
 function displayTable(dictionary, rows) {
@@ -85,7 +133,5 @@ function displayTable(dictionary, rows) {
   }
 }
 
-
-  
 displaySessionData();
 
