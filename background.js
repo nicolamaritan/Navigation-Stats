@@ -30,12 +30,14 @@ function getBaseUrl(url) {
   return urlObj.origin;
 }
 
+var avoided_urls = ["chrome://newtab"]
+
 // Listener for loading page to be completed
 chrome.webNavigation.onCompleted.addListener(function(details) {
   var url = String(details.url);
   url = getBaseUrl(url);
   console.log("A page was loaded: " + url);
-  if (url != "null")
+  if (url != "null" && !avoided_urls.includes(url))
   {
     update(url);
   }

@@ -27,7 +27,7 @@ body {
 .section-title
 {
     width: 100%;
-    height: 50px;
+    height: 10%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -45,7 +45,7 @@ body {
 .section-title p
 {
     display: inline-block;
-    margin-left: 10px;
+    margin-left: 5%;
     color: rgb(64, 64, 64);
     font-weight: bold;
     font-size: 2em;
