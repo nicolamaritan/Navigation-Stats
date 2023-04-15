@@ -30,7 +30,10 @@ function getBaseUrl(url) {
   return urlObj.origin;
 }
 
-var avoided_urls = ["chrome://newtab"]
+// Avoided URLs are not shown in the stats list
+var avoided_urls = ["chrome://newtab",
+                    "https://accounts.google.com",
+                    "https://ogs.google.com"]
 
 // Listener for loading page to be completed
 chrome.webNavigation.onCompleted.addListener(function(details) {

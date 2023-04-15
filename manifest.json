@@ -1,11 +1,11 @@
 {
     "manifest_version": 3,
-    "name": "StatsPro",
-    "description": "Statistics about your navigation.",
+    "name": "Navigation Stats",
+    "description": "Chrome extension showing statistics about your navigation.",
     "version": "1.0",
     "action":{
         "default_popup": "popup.html",
-        "default_title": "StatsPro"
+        "default_title": "Navigation Stats"
     },
     "permissions": [
         "activeTab",

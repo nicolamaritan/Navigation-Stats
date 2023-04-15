@@ -44,18 +44,23 @@ function convertMillisecondsToHoursAndMinutes(milliseconds)
   
   // Build the string representation
   let str = "";
-  if (hours > 0) {
+  if (hours > 0) 
+  {
     str += hours + " hour";
-    if (hours > 1) {
+    if (hours > 1) 
+    {
       str += "s";
     }
   }
-  if (minutes > 0) {
-    if (str.length > 0) {
+  if (minutes > 0) 
+  {
+    if (str.length > 0) 
+    {
       str += " ";
     }
     str += minutes + " minute";
-    if (minutes > 1) {
+    if (minutes > 1) 
+    {
       str += "s";
     }
   }
@@ -133,5 +138,5 @@ function displayTable(dictionary, rows) {
   }
 }
 
+// --- Script entry point ---
 displaySessionData();
-
