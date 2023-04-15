@@ -1,3 +1,3 @@
 # StatsPro
 ## Description
-Chrome extension which tracks most viewed sites in the current session.
+Chrome extension which tracks most viewed sites and elapsed time in the current session.
